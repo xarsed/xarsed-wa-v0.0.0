@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    
+    <head>
+      
+        <meta charset="utf-8">
+      
+        {% load static %}
+        <link rel="shortcut icon" type="image/svg+xml" href="{% static 'images/logo.svg' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+          
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Error Message-Xarsed</title>
+        <style>
+            body {
+                background: radial-gradient(hsl(65.76, 75.32%, 53.92%)/*Pear*/, hsl(80.79, 95.49%, 26.08%)/*Avocado*/);  
+            }
+        </style>
+      
+    </head>
+      
+    <body>
+        
+        <div class="glass">
+
+            <div class="message">
+                {{message}}
+            </div>
+            <h1>
+                {{ title }}
+            </h1>
+            <h2>
+                Come back and try again!
+            </h2>
+
+        </div>
+
+    </body>
+
+</html>

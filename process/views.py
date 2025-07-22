@@ -7,6 +7,7 @@ from xarsed.common.common import generate_list
 from process.forms import UserLocationForm
 from process.models import BTCAddress
 
+
 def get_location(request):
     
     if request.method == "POST": 
@@ -397,7 +398,6 @@ def delete_table(request, selectedParameter):
 def final_report(request): 
   
     try:
-        import os
 
         selected_resource = request.session["selected_resource"]
         selected_requirement = request.session["selected_requirement"]

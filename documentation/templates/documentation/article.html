@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    
+    <head>
+      
+        <meta charset="utf-8">
+      
+        {% load static %}
+        {% load documentation_function %}
+        <link rel="shortcut icon" type="image/svg+xml" href="{% static 'images/logo.svg' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+          
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{{ selectedTitle|replace_underscore_questionmark }}</title>
+
+        <meta name="description" content="{{ description }}">
+        <meta name="keywords" content="{{ keywords }}">
+        
+        <style>
+            body {
+                background: radial-gradient(hsl(65.76, 75.32%, 53.92%)/*Pear*/, hsl(80.79, 95.49%, 26.08%)/*Avocado*/);  
+            }
+        </style>
+      
+    </head>
+      
+    <body>
+
+        <article itemscope itemtype="https://schema.org/Article">
+        
+            <div class="glass">
+
+                <h1 itemprop="headline">{{ selectedTitle|replace_underscore_questionmark }}</h1>
+
+            </div>
+            <div class="meta">
+
+                <meta itemprop="description" content="{{ description }}">
+                <meta itemprop="keywords" content="{{ keywords }}">
+
+            </div>
+            <div class="glass content">
+
+                {{ content|safe|linebreaksbr }}
+
+            </div>
+
+        </article>
+
+        {% if user.is_superuser %}
+        <div class="glass">
+            
+            <h1>
+                Admin Panel
+            </h1>
+            <form action="{% url 'documentation:edit_article' selectedTitle %}" class="form" method="post">
+                {% csrf_token %}
+                <button type="submit" class="button" id="edit">Edit Article</button>
+            </form>  
+        
+        </div>
+        {% endif %}
+
+    </body>
+
+</html>

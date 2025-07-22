@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    
+    <head>
+      
+        <meta charset="utf-8">
+      
+        {% load static %}
+        <link rel="shortcut icon" type="image/svg+xml" href="{% static 'images/logo.svg' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+          
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Edit Article-Xarsed</title>
+        <style>
+            body {
+                background: radial-gradient(hsl(65.76, 75.32%, 53.92%)/*Pear*/, hsl(80.79, 95.49%, 26.08%)/*Avocado*/);  
+            }
+        </style>
+      
+    </head>
+      
+    <body>
+        
+        <div class="glass">
+
+            <form action="{% url 'documentation:save_change' selectedTitle %}" class="form" method="post">
+                {% csrf_token %}
+
+                <label for="title">Insert desire title: (maximum 200 characters)</label>
+                <textarea class="input" id="title" name="title" rows="5" cols="40" maxlength="200" required>{{selectedTitle}}</textarea>
+
+                <label for="content">Edit your content:</label>
+                <textarea class="input" id="content" name="content" rows="20" cols="50" required>{{selectedContent}}</textarea>
+
+                <label for="description">Edit your description: (maximum 250 characters)</label>
+                <textarea class="input" id="description" name="description" rows="7" cols="40" maxlength="250" required>{{selectedDescription}}</textarea>
+
+                <label for="keywords">Edit your keywords: (Separate with commas)(maximum 150 characters)</label>
+                <textarea class="input" id="keywords" name="keywords" rows="3" cols="40" maxlength="150" required>{{selectedKeywords}}</textarea>
+
+                <button type="submit" class="button" id="edit">Edit</button>
+            </form> 
+            
+            <form action="{% url 'documentation:save_change' selectedTitle %}" class="form" method="post">
+                {% csrf_token %}
+
+                <input type="hidden" id="title" name="title" value="delete" />
+                <input type="hidden" id="content" name="content" value="" />
+                <input type="hidden" id="description" name="description" value="" />
+                <input type="hidden" id="keywords" name="keywords" value="" />
+
+                <button type="submit" class="button" id="delete">Delete</button>
+            </form> 
+        
+        </div>
+
+    </body>
+
+</html>

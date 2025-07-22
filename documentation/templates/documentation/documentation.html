@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    
+    <head>
+      
+        <meta charset="utf-8">
+      
+        {% load static %}
+        <link rel="shortcut icon" type="image/svg+xml" href="{% static 'images/logo.svg' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+          
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Documentation-Xarsed</title>
+        <style>
+            body {
+                background: radial-gradient(hsl(65.76, 75.32%, 53.92%)/*Pear*/, hsl(80.79, 95.49%, 26.08%)/*Avocado*/);  
+            }
+        </style>
+      
+    </head>
+      
+    <body>
+        
+        <div class="glass">
+
+            <h1>
+                Xarsed Documentation
+            </h1>
+
+            <h2>
+                <a href="{% url 'documentation:open_article' 'article' %}" id="link">
+                    article
+                </a>
+            </h2>
+
+        </div>
+
+        {% if user.is_superuser %}
+        <div class="glass">
+            
+            <h1>
+                Admin Panel
+            </h1>
+            <form action="{% url 'documentation:edit_article' 'create' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="button" id="create">Create New Article</button> 
+
+            </form>
+
+        </div>
+        {% endif %} 
+
+    </body>
+
+</html>

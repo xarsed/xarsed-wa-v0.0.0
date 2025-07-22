@@ -20,7 +20,14 @@
       
     </head>
       
-    <body>
+    <body itemscope itemtype="https://schema.org/WebApplication">
+        
+        <meta itemprop="applicationCategory" content="HomeApplication" />
+        <meta itemprop="url" content="https://xarsed.pythonanywhere.com/home/" />
+        
+        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <meta itemprop="price" content="0" />
+        </div>
         
         <div class="glass">
 
@@ -76,7 +83,7 @@
 
                 </div>
                 <div>
-                    <h1>
+                    <h1 itemprop="name">
                         Xarsed
                     </h1>
                     <h2>
@@ -93,7 +100,7 @@
             <h2>
                 About Xarsed
             </h2>
-            <p>
+            <p itemprop="description">
                 <b>Xarsed</b> is a companion that helps you meet your needs in harmony with nature. In this path, it has moved towards one of today's needs, namely energy. 
                 In the first step, <b>Xarsed</b> has created an algorithm based on scientific data that helps you design a solar power plant based on your need pattern. 
                 This power plant is based on the most common electricity supply systems, photovoltaic panels and batteries.
@@ -134,6 +141,17 @@
             </p>
             <form action="{% url 'process:get_location' %}" class="form" method="get">  
                 <button type="submit" class="button" id="start">Start</button>
+            </form>
+
+        </div>
+
+        <div class="glass">
+
+            <p>
+                If you want to know more about <b>Xarsed</b>, visit the <b>Xarsed</b> documentaion section:
+            </p>
+            <form action="{% url 'documentation:documentation' %}" class="form" method="get">  
+                <button type="submit" class="button" id="documentation">Documentation</button>
             </form>
 
         </div>

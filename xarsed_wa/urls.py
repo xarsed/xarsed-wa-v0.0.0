@@ -17,10 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import GenericSitemap
+from documentation.models import Article
+
+
+info_dict = {
+    "queryset": Article.objects.all()
+}
+sitemaps = {"article": GenericSitemap(info_dict, priority=0.6)}
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("home/", include("home.urls")),
     path("process/", include("process.urls")),
+    path("documentation/", include("documentation.urls")),
     path("", RedirectView.as_view(url="home/")),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
 ]
+
+
+

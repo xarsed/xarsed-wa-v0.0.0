@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'home.apps.HomeConfig', 
     'process.apps.ProcessConfig',
+    'documentation.apps.DocumentationConfig',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
