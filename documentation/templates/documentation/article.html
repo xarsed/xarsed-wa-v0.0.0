@@ -42,11 +42,19 @@
             </div>
             <div class="glass content">
 
-                {{ content|safe|linebreaksbr }}
+                {{ content|safe }}
 
             </div>
 
         </article>
+
+        <div class="glass">
+
+            <form action="{% url 'home:home' %}" class="form" method="get">
+                <button type="submit" class="button" id="try">Let's try Xarsed!</button>
+            </form>  
+        
+        </div>
 
         {% if user.is_superuser %}
         <div class="glass">
